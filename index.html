@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Speech-to-Text (India)</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 860px; margin: 40px auto; padding: 0 16px; background:#0f1115; color:#e5e7eb;}
+    .card { border: 1px solid #1f2430; border-radius: 12px; padding: 24px; box-shadow: 0 1px 8px rgba(0,0,0,0.3); background:#151922;}
+    h1 { margin-top: 0; color:#fff; }
+    label { display:block; margin-top: 12px; font-weight: 600; }
+    input, select { margin-top: 6px; width:100%; padding:10px; border-radius:8px; border:1px solid #2a3140; background:#0f131b; color:#e5e7eb;}
+    button { margin-top: 18px; padding: 10px 16px; border-radius: 8px; border: 1px solid #2a3140; cursor: pointer; background:#0f131b; color:#e5e7eb;}
+    pre { background: #0b0e14; padding: 16px; border-radius: 8px; white-space: pre-wrap; min-height: 70px; border:1px solid #2a3140;}
+    .muted { color: #9aa4b2; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>AI Speech-to-Text (India-Optimized)</h1>
+    <p class="muted">Upload a short audio clip (WAV recommended). Choose language for accuracy.</p>
+
+    <form id="sttForm">
+      <label>Language</label>
+      <select name="language">
+        <option value="en-IN">English (India)</option>
+        <option value="hi-IN">Hindi</option>
+        <option value="kn-IN">Kannada</option>
+        <option value="ta-IN">Tamil</option>
+        <option value="te-IN">Telugu</option>
+        <option value="ml-IN">Malayalam</option>
+        <option value="mr-IN">Marathi</option>
+        <option value="bn-IN">Bengali</option>
+      </select>
+
+      <label>Audio File</label>
+      <input type="file" name="audio" accept="audio/*" required />
+
+      <button type="submit">Upload & Transcribe</button>
+    </form>
+
+    <h3>Transcribed Text</h3>
+    <pre id="output">—</pre>
+  </div>
+
+  <script>
+    const form = document.getElementById('sttForm');
+    const output = document.getElementById('output');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      output.textContent = "Processing...";
+      const data = new FormData(form);
+      try {
+        const res = await fetch('/speech_to_text', { method: 'POST', body: data });
+        const json = await res.json();
+        output.textContent = json.ok ? json.transcription : "Error: " + (json.error || "Unknown");
+      } catch (err) {
+        output.textContent = "Network error: " + err.message;
+      }
+    });
+  </script>
+</body>
+</html>
