@@ -1,0 +1,85 @@
+# -----------------------------
+# Python & Flask Configuration
+# -----------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.db
+*.sqlite3
+instance/
+.mypy_cache/
+.pytest_cache/
+.flaskenv
+.env
+
+# -----------------------------
+# Virtual Environment
+# -----------------------------
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+
+# -----------------------------
+# Audio & Transcription Files
+# -----------------------------
+uploads/
+audio/
+samples/
+*.wav
+*.mp3
+*.m4a
+*.ogg
+*.flac
+*.aac
+*.txt  # generated transcripts
+
+# -----------------------------
+# Model & API Related
+# -----------------------------
+model_cache/
+*.bin
+*.pt
+*.onnx
+
+# -----------------------------
+# Temporary or Cache Files
+# -----------------------------
+temp/
+tmp/
+*.tmp
+.cache/
+*.pickle
+*.pkl
+
+# -----------------------------
+# Logs & Debug Files
+# -----------------------------
+logs/
+*.log
+debug.log
+
+# -----------------------------
+# Build / Distribution Files
+# -----------------------------
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# -----------------------------
+# IDE / Editor Files
+# -----------------------------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# -----------------------------
+# OS Generated Files
+# -----------------------------
+.DS_Store
+Thumbs.db
