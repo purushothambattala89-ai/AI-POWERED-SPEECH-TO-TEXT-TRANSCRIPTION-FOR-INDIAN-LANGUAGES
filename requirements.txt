@@ -1,0 +1,7 @@
+Flask
+SpeechRecognition
+pydub
+openai
+python-dotenv
+requests
+gunicorn
